@@ -1,30 +1,22 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-class Ping extends Component {
+function Ping() {
+    const [pong, setPong] = useState('pending')
 
-    constructor() {
-        super();
-        this.state = {
-            pong: 'pending'
-        }
-    }
-
-    componentWillMount() {
+    useEffect(() => {
         axios.get('api/ping')
             .then((response) => {
-                this.setState(() => {
-                    return { pong: response.data.message }
-                })
+                setPong(response.data.message)
             })
             .catch(function (error) {
                 console.log(error);
             });
 
-    }
+    })
 
-    render() {
-        return <h1>Ping {this.state.pong}</h1>;
-    }
+    return(
+        <h1>Ping {pong}</h1>
+    )
 }
 
 export default Ping;
