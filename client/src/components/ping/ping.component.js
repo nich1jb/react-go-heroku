@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-class PingComponent extends Component {
+class Ping extends Component {
 
     constructor() {
         super();
@@ -27,4 +27,4 @@ class PingComponent extends Component {
     }
 }
 
-export default PingComponent;
+export default Ping;
